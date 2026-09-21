@@ -1,0 +1,489 @@
+# ============================================================
+# MULTI-FORMAT SCIENTIFIC & ENGINEERING CALCULATOR
+# Python Programming Language Project
+# ============================================================
+
+import math
+import statistics
+
+
+# ============================================================
+# 1. BASIC ARITHMETIC
+# ============================================================
+
+def arithmetic():
+    print("\n--- BASIC ARITHMETIC ---")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+
+    choice = input("Enter choice: ")
+
+    try:
+        a = float(input("Enter first number: "))
+        b = float(input("Enter second number: "))
+
+        if choice == "1":
+            print("Result:", a + b)
+
+        elif choice == "2":
+            print("Result:", a - b)
+
+        elif choice == "3":
+            print("Result:", a * b)
+
+        elif choice == "4":
+            if b == 0:
+                print("Error: Division by zero is not allowed.")
+            else:
+                print("Result:", a / b)
+
+        else:
+            print("Invalid choice.")
+
+    except ValueError:
+        print("Error: Please enter valid numbers.")
+
+
+# ============================================================
+# 2. SCIENTIFIC CALCULATIONS
+# ============================================================
+
+def scientific():
+    print("\n--- SCIENTIFIC CALCULATOR ---")
+    print("1. Square Root")
+    print("2. Power")
+    print("3. Logarithm")
+    print("4. Sine")
+    print("5. Cosine")
+    print("6. Tangent")
+    print("7. Exponential")
+
+    choice = input("Enter choice: ")
+
+    try:
+
+        if choice == "1":
+            x = float(input("Enter value: "))
+
+            if x < 0:
+                print("Error: Square root requires a non-negative value.")
+            else:
+                print("Square Root:", math.sqrt(x))
+
+        elif choice == "2":
+            x = float(input("Enter base: "))
+            y = float(input("Enter exponent: "))
+            print("Power:", math.pow(x, y))
+
+        elif choice == "3":
+            x = float(input("Enter value: "))
+
+            if x <= 0:
+                print("Error: Logarithm requires a positive value.")
+            else:
+                print("Logarithm:", math.log(x))
+
+        elif choice == "4":
+            angle = float(input("Enter angle in degrees: "))
+            radians = math.radians(angle)
+            print("Sine:", math.sin(radians))
+
+        elif choice == "5":
+            angle = float(input("Enter angle in degrees: "))
+            radians = math.radians(angle)
+            print("Cosine:", math.cos(radians))
+
+        elif choice == "6":
+            angle = float(input("Enter angle in degrees: "))
+            radians = math.radians(angle)
+            print("Tangent:", math.tan(radians))
+
+        elif choice == "7":
+            x = float(input("Enter value: "))
+            print("Exponential:", math.exp(x))
+
+        else:
+            print("Invalid choice.")
+
+    except ValueError:
+        print("Error: Invalid input.")
+
+    except OverflowError:
+        print("Error: Number is too large.")
+
+
+# ============================================================
+# 3. STATISTICAL CALCULATIONS
+# ============================================================
+
+def statistics_calculation():
+    print("\n--- STATISTICS ---")
+
+    try:
+        data = input(
+            "Enter numbers separated by spaces: "
+        )
+
+        numbers = [float(x) for x in data.split()]
+
+        if len(numbers) == 0:
+            print("No numbers entered.")
+            return
+
+        print("\n1. Mean")
+        print("2. Median")
+        print("3. Mode")
+        print("4. Variance")
+        print("5. Standard Deviation")
+        print("6. All Statistics")
+
+        choice = input("Enter choice: ")
+
+        if choice == "1":
+            print("Mean:", statistics.mean(numbers))
+
+        elif choice == "2":
+            print("Median:", statistics.median(numbers))
+
+        elif choice == "3":
+            try:
+                print("Mode:", statistics.mode(numbers))
+            except statistics.StatisticsError:
+                print("No unique mode.")
+
+        elif choice == "4":
+            if len(numbers) < 2:
+                print("At least two values are required.")
+            else:
+                print("Variance:",
+                      statistics.variance(numbers))
+
+        elif choice == "5":
+            if len(numbers) < 2:
+                print("At least two values are required.")
+            else:
+                print("Standard Deviation:",
+                      statistics.stdev(numbers))
+
+        elif choice == "6":
+            print("\nMean:",
+                  statistics.mean(numbers))
+
+            print("Median:",
+                  statistics.median(numbers))
+
+            try:
+                print("Mode:",
+                      statistics.mode(numbers))
+            except statistics.StatisticsError:
+                print("Mode: No unique mode")
+
+            if len(numbers) >= 2:
+                print("Variance:",
+                      statistics.variance(numbers))
+
+                print("Standard Deviation:",
+                      statistics.stdev(numbers))
+
+        else:
+            print("Invalid choice.")
+
+    except ValueError:
+        print("Error: Enter valid numbers.")
+
+
+# ============================================================
+# 4. NUMBER SYSTEM CONVERSION
+# ============================================================
+
+def number_conversion():
+    print("\n--- NUMBER SYSTEM CONVERSION ---")
+
+    print("1. Decimal to Binary")
+    print("2. Decimal to Octal")
+    print("3. Decimal to Hexadecimal")
+    print("4. Binary to Decimal")
+    print("5. Octal to Decimal")
+    print("6. Hexadecimal to Decimal")
+
+    choice = input("Enter choice: ")
+
+    try:
+
+        if choice == "1":
+            n = int(input("Enter decimal number: "))
+            print("Binary:", bin(n))
+
+        elif choice == "2":
+            n = int(input("Enter decimal number: "))
+            print("Octal:", oct(n))
+
+        elif choice == "3":
+            n = int(input("Enter decimal number: "))
+            print("Hexadecimal:", hex(n))
+
+        elif choice == "4":
+            n = input("Enter binary number: ")
+            print("Decimal:", int(n, 2))
+
+        elif choice == "5":
+            n = input("Enter octal number: ")
+            print("Decimal:", int(n, 8))
+
+        elif choice == "6":
+            n = input("Enter hexadecimal number: ")
+            print("Decimal:", int(n, 16))
+
+        else:
+            print("Invalid choice.")
+
+    except ValueError:
+        print("Error: Invalid number format.")
+
+
+# ============================================================
+# 5. ENGINEERING NOTATION
+# ============================================================
+
+def engineering_calculation():
+    print("\n--- ENGINEERING CALCULATION ---")
+
+    try:
+        value = float(input("Enter value: "))
+
+        if value == 0:
+            print("Engineering Notation: 0")
+            return
+
+        exponent = int(
+            math.floor(
+                math.log10(abs(value)) / 3
+            ) * 3
+        )
+
+        mantissa = value / (10 ** exponent)
+
+        print(
+            "Engineering Notation:",
+            f"{mantissa:.6g} × 10^{exponent}"
+        )
+
+    except ValueError:
+        print("Error: Invalid input.")
+
+
+# ============================================================
+# 6. UNIT CONVERSION
+# ============================================================
+
+def unit_conversion():
+    print("\n--- UNIT CONVERSION ---")
+
+    print("1. Length")
+    print("2. Temperature")
+    print("3. Mass")
+    print("4. Time")
+
+    choice = input("Enter choice: ")
+
+    try:
+
+        # ---------------- LENGTH ----------------
+
+        if choice == "1":
+
+            print("\nUnits: mm, cm, m, km")
+
+            value = float(input("Enter value: "))
+            source = input("Source unit: ").lower()
+            target = input("Target unit: ").lower()
+
+            units = {
+                "mm": 0.001,
+                "cm": 0.01,
+                "m": 1,
+                "km": 1000
+            }
+
+            if source not in units or target not in units:
+                print("Invalid unit.")
+                return
+
+            meters = value * units[source]
+            result = meters / units[target]
+
+            print("Result:", result, target)
+
+        # ---------------- TEMPERATURE ----------------
+
+        elif choice == "2":
+
+            value = float(input("Enter temperature: "))
+
+            source = input(
+                "Source unit (C/F/K): "
+            ).upper()
+
+            target = input(
+                "Target unit (C/F/K): "
+            ).upper()
+
+            # Convert to Celsius
+
+            if source == "C":
+                celsius = value
+
+            elif source == "F":
+                celsius = (value - 32) * 5 / 9
+
+            elif source == "K":
+                celsius = value - 273.15
+
+            else:
+                print("Invalid source unit.")
+                return
+
+            # Convert Celsius to target
+
+            if target == "C":
+                result = celsius
+
+            elif target == "F":
+                result = (celsius * 9 / 5) + 32
+
+            elif target == "K":
+                result = celsius + 273.15
+
+            else:
+                print("Invalid target unit.")
+                return
+
+            print("Result:", result, target)
+
+        # ---------------- MASS ----------------
+
+        elif choice == "3":
+
+            print("\nUnits: mg, g, kg")
+
+            value = float(input("Enter value: "))
+            source = input("Source unit: ").lower()
+            target = input("Target unit: ").lower()
+
+            units = {
+                "mg": 0.001,
+                "g": 1,
+                "kg": 1000
+            }
+
+            if source not in units or target not in units:
+                print("Invalid unit.")
+                return
+
+            grams = value * units[source]
+            result = grams / units[target]
+
+            print("Result:", result, target)
+
+        # ---------------- TIME ----------------
+
+        elif choice == "4":
+
+            print("\nUnits: sec, min, hour")
+
+            value = float(input("Enter value: "))
+            source = input("Source unit: ").lower()
+            target = input("Target unit: ").lower()
+
+            units = {
+                "sec": 1,
+                "min": 60,
+                "hour": 3600
+            }
+
+            if source not in units or target not in units:
+                print("Invalid unit.")
+                return
+
+            seconds = value * units[source]
+            result = seconds / units[target]
+
+            print("Result:", result, target)
+
+        else:
+            print("Invalid choice.")
+
+    except ValueError:
+        print("Error: Invalid input.")
+
+
+# ============================================================
+# 7. MAIN MENU
+# ============================================================
+
+def main():
+
+    while True:
+
+        print("\n")
+        print("=" * 60)
+        print(" MULTI-FORMAT SCIENTIFIC & ENGINEERING CALCULATOR")
+        print("=" * 60)
+
+        print("1. Basic Arithmetic")
+        print("2. Scientific Calculations")
+        print("3. Statistical Calculations")
+        print("4. Number System Conversion")
+        print("5. Engineering Calculation")
+        print("6. Unit Conversion")
+        print("7. Exit")
+
+        print("=" * 60)
+
+        choice = input("Enter choice: ")
+
+        if choice == "1":
+
+            arithmetic()
+
+        elif choice == "2":
+
+            scientific()
+
+        elif choice == "3":
+
+            statistics_calculation()
+
+        elif choice == "4":
+
+            number_conversion()
+
+        elif choice == "5":
+
+            engineering_calculation()
+
+        elif choice == "6":
+
+            unit_conversion()
+
+        elif choice == "7":
+
+            print("\n===== PROGRAM ENDED =====")
+            break
+
+        else:
+
+            print(
+                "Invalid choice! "
+                "Please enter a number from 1 to 7."
+            )
+
+
+# ============================================================
+# PROGRAM START
+# ============================================================
+
+if __name__ == "__main__":
+    main()
